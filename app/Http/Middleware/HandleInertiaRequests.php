@@ -1,10 +1,11 @@
+<?php
+
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-use Tighten\Ziggy\Ziggy;
-use Illuminate\Support\Facades\Auth;
-
+use Tighten\Ziggy\Ziggy; /*yg bagian Tightenco 'co' nya di ilangin biar bisa ngetag si ziggy yg di bawah*/
+use Illuminate\Support\Facades\Auth; 
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -29,34 +30,33 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        // Default user is null
-        $user = null;
-
-        // If the user is authenticated, load their roles
-        if ($authenticatedUser = Auth::user()) {
-            $authenticatedUser->load('roles'); // Ensure that 'roles' relationship is defined in the User model
-            $user = [
-                'id' => $authenticatedUser->id,
-                'name' => $authenticatedUser->name,
-                'email' => $authenticatedUser->email,
-                'roles' => $authenticatedUser->roles,
-            ];
-        }
-
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $user, // Pass the $user object here
+                'user' => $request->user(),
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
                 ]);
             },
-            'flash' => function () use ($request) {
+            'flash' => function () use ($request) { /*membuat flash messege (digunakan untuk menampilkan pesan sukses atau pesan kesalahan kepada pengguna setelah tindakan tertentu.)*/
                 return [
                     'success' => $request->session()->get('success'),
                     'error' => $request->session()->get('error'),
                 ];
+                 //Tambahkan auth 
+ $user = Auth::user();
+
+        if ($user) {
+            $user->load('roles');
+
+            $user = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'roles' => $user->roles,
+            ];
+        }
             },
         ]);
     }
