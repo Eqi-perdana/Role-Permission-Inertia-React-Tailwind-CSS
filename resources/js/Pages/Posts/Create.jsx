@@ -28,14 +28,14 @@ export default function Dashboard(props) {
                             <form name="createForm" onSubmit={handleSubmit}>
                                 <div className="flex flex-col">
                                     <div className="mb-4">
-                                        <label className="">Title</label>
+                                        <label className="">Judul</label>
                                         <input type="text" className="w-full px-4 py-2" label="Title" name="title" value={data.title} onChange={(e) => setData("title", e.target.value)} />
                                         <span className="text-red-600">
                                             {errors.title}
                                         </span>
                                     </div>
                                     <div className="mb-0">
-                                        <label className="">Body</label>
+                                        <label className="">Nama Peminjam</label>
                                         <textarea type="text" className="w-full rounded" label="body" name="body" errors={errors.body} value={data.body} onChange={(e) => setData("body", e.target.value)} />
                                         <span className="text-red-600">
                                             {errors.body}
@@ -47,7 +47,7 @@ export default function Dashboard(props) {
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
                                         </svg>
-                                        <span className="ml-2">Save</span>
+                                        <span className="ml-2">Simpan</span>
                                     </button>
                                 </div>
                             </form>
