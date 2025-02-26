@@ -27,17 +27,17 @@ export default function Dashboard(props) {
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                     </svg>
-                                    <span className="ml-2">New Post</span>
+                                    <span className="ml-2">Tambah Posts</span>
                                 </Link>
                             </div>
 
                             <table className="table-fixed w-full">
                                 <thead>
                                     <tr className="text-white bg-gray-500">
-                                        <th className="px-4 py-2 w-20">No.</th>
-                                        <th className="px-4 py-2">Title</th>
-                                        <th className="px-4 py-2">Body</th>
-                                        <th className="px-4 py-2">Action</th>
+                                        <th className="px-4 py-2 w-20">No</th>
+                                        <th className="px-4 py-2">Judul Buku</th>
+                                        <th className="px-4 py-2">Nama Peminjam</th>
+                                        <th className="px-4 py-2">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,7 +54,7 @@ export default function Dashboard(props) {
                                     ))}
                                     {posts.length === 0 && (
                                         <tr>
-                                            <td className="px-6 py-4 border-t" colSpan="4">No posts found.</td>
+                                            <td className="px-6 py-4 border-t" colSpan="4">belum ada data posts!!! Silahkan isi terlebih dahulu.</td>
                                         </tr>
                                     )}
                                 </tbody>
